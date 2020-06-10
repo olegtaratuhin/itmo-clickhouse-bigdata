@@ -1,0 +1,13 @@
+.DS_Store
+
+server/shard-1/instance-1/log/
+server/shard-1/instance-1/volume/
+
+server/shard-1/instance-2/log/
+server/shard-1/instance-2/volume/
+
+server/shard-2/instance-3/log/
+server/shard-2/instance-3/volume/
+
+server/shard-2/instance-4/log/
+server/shard-2/instance-4/volume/

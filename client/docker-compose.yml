@@ -1,0 +1,19 @@
+version: '3'
+
+networks:
+    main:
+        external:
+            name: server_main
+
+services: 
+
+    client:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        tty: true
+        stdin_open: true
+        networks:
+            - main
+        volumes:
+            - "./:/home/data/"

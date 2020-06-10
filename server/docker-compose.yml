@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 networks: 
     main:
@@ -15,64 +15,48 @@ services:
     
     ch1:
         build:
-            context: .
+            context: ./shard-1/instance-1/
             dockerfile: Dockerfile
         depends_on:
             - zookeeper
-        ports:
-            - 8811:8123
-            - 9011:9000
-        expose:
-            - "9011"
         networks: 
             - main
         volumes:
-            - "./volume1:/var/lib/clickhouse"
+            - ./shard-1/instance-1/volume:/var/lib/clickhouse
+            - ./shard-1/instance-1/log:/var/log/clickhouse-server
   
     ch2:
         build:
-            context: .
+            context: ./shard-1/instance-2/
             dockerfile: Dockerfile
         depends_on:
             - zookeeper
-        ports:
-            - 8812:8123
-            - 9012:9000
-        expose:
-            - "9012"
         networks: 
             - main
         volumes:
-            - "./volume2:/var/lib/clickhouse"
+            - ./shard-1/instance-2/volume:/var/lib/clickhouse
+            - ./shard-1/instance-2/log:/var/log/clickhouse-server
   
     ch3:
         build:
-            context: .
+            context: ./shard-2/instance-3/
             dockerfile: Dockerfile
         depends_on:
             - zookeeper
-        ports:
-            - 8813:8123
-            - 9013:9000
         networks: 
             - main
-        expose:
-            - "9013"
         volumes:
-            - "./volume3:/var/lib/clickhouse"
+            - ./shard-2/instance-3/volume:/var/lib/clickhouse
+            - ./shard-2/instance-3/log:/var/log/clickhouse-server
   
     ch4:
         build:
-            context: .
+            context: ./shard-2/instance-4/
             dockerfile: Dockerfile
         depends_on:
             - zookeeper
-        ports:
-            - 8814:8123
-            - 9014:9000
         networks: 
             - main
-        expose:
-            - "9014"
         volumes:
-            - "./volume4:/var/lib/clickhouse"
+            - ./shard-2/instance-4/volume:/var/lib/clickhouse
+            - ./shard-2/instance-4/log:/var/log/clickhouse-server
