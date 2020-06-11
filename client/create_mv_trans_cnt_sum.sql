@@ -1,4 +1,4 @@
-create materialized view itmo.cnt_out_user
+create materialized view itmo.cnt_trans_cnt_sum
 
 engine = AggregatingMergeTree()
 partition by month
@@ -8,8 +8,8 @@ populate
 as select
     user_id_out as user_id,
     toMonth(datetime) as month,
-    count(user_id_out) as cnt
-    
+    count(user_id_in) + count(user_id_out) as trans_sum
+
 from itmo.transactions_distributed
 
 group by 
