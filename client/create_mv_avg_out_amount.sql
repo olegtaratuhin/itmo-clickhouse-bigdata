@@ -17,6 +17,6 @@ as
         toMonth(datetime)
 ;
 
-create table itmo.avg_in_amount_distributed as itmo.avg_out_amount
+create table itmo.avg_out_amount_distributed as itmo.avg_out_amount
 engine = Distributed(ch_cluster, itmo, avg_out_amount)
 ;
