@@ -8,7 +8,7 @@ populate
 as select
     user_id_out as user_id,
     toMonth(datetime) as month,
-    sum(user_id_in) - sum(user_id_out) as trans_sum
+    sumState(amount) - sumState(amount) as trans_sum
 
 from itmo.transactions
 
