@@ -10,7 +10,7 @@ as select
     toMonth(datetime) as month,
     count(user_id_in) as cnt
     
-from itmo.transactions_distributed
+from itmo.transactions
 
 group by 
     user_id_in,
@@ -20,4 +20,7 @@ order by
     toMonth(datetime)
 
 ;
-    
+
+create table itmo.cnt_in_user_distributed as itmo.cnt_in_user
+engine = Distributed(ch_cluster, itmo, itmo.cnt_in_user)
+;

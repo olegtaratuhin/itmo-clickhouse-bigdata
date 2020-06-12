@@ -10,7 +10,7 @@ as select
     toMonth(datetime) as month,
     count(user_id_in) + count(user_id_out) as trans_sum
 
-from itmo.transactions_distributed
+from itmo.transactions
 
 group by 
     user_id_out,
@@ -20,4 +20,7 @@ order by
     toMonth(datetime)
 
 ;
-    
+
+create table itmo.cnt_trans_cnt_sum_distributed as itmo.cnt_trans_cnt_sum
+engine = Distributed(ch_cluster, itmo, itmo.cnt_trans_cnt_sum)
+;

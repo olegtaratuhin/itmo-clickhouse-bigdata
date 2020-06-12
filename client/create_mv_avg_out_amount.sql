@@ -10,7 +10,7 @@ as select
     toMonth(datetime) as month,
     avg(amount) as avg_amount
     
-from itmo.transactions_distributed
+from itmo.transactions
 
 group by 
     user_id_out, 
@@ -20,4 +20,7 @@ order by
     toMonth(datetime)
 
 ;
-    
+
+create table itmo.avg_out_amount_distributed as itmo.avg_out_amount
+engine = Distributed(ch_cluster, itmo, itmo.avg_out_amount)
+;
