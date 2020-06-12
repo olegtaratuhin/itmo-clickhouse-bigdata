@@ -22,5 +22,5 @@ order by
 ;
 
 create table itmo.cnt_in_user_distributed as itmo.cnt_in_user
-engine = Distributed(ch_cluster, itmo, itmo.cnt_in_user)
+engine = Distributed(ch_cluster, itmo, cnt_in_user)
 ;

@@ -1,4 +1,4 @@
-create materialized view itmo.cnt_trans_cnt_sum
+create materialized view itmo.trans_cnt_sum
 
 engine = AggregatingMergeTree()
 partition by month
@@ -21,6 +21,6 @@ order by
 
 ;
 
-create table itmo.cnt_trans_cnt_sum_distributed as itmo.cnt_trans_cnt_sum
-engine = Distributed(ch_cluster, itmo, itmo.cnt_trans_cnt_sum)
+create table itmo.trans_cnt_sum_distributed as itmo.trans_cnt_sum
+engine = Distributed(ch_cluster, itmo, trans_cnt_sum)
 ;

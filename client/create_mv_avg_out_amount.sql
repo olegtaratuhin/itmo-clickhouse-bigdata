@@ -1,6 +1,6 @@
 create materialized view itmo.avg_out_amount
 
-engine = SummingMergeTree
+engine = AggregatingMergeTree
 partition by month
 order by user_id
 populate
@@ -22,5 +22,5 @@ order by
 ;
 
 create table itmo.avg_out_amount_distributed as itmo.avg_out_amount
-engine = Distributed(ch_cluster, itmo, itmo.avg_out_amount)
+engine = Distributed(ch_cluster, itmo, avg_out_amount)
 ;
